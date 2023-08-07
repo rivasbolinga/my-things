@@ -15,7 +15,7 @@ class Create
         book = Book.new(publisher, cover_state, publish_date: publish_date)
         saved_label = lists[:labels_list].find { |label| label.title == label_title }
         unless saved_label
-        colors = ["red", "green", "blue", "yellow", "orange", "purple"]
+        colors = ["Red", "Green", "Blue", "Yellow", "Orange", "Purple"]
         saved_label = Label.new(label_title, colors.sample)
         lists[:labels_list] << saved_label
         end

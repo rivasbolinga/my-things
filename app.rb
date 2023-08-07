@@ -1,6 +1,7 @@
 require_relative 'app-management/ui_class'
 require './list'
 require './create'
+require './save'
 
 class App
   def initialize
@@ -11,6 +12,7 @@ class App
     }
     @list = List.new
     @create = Create.new
+    @save = Save.new
   end
 
   def run
@@ -85,6 +87,7 @@ class App
   end
 
   def exit_app
+    @save.books(@books_and_labels[:books_list])
     puts 'Exiting the application....'
     puts 'Goodbye!👋🏼'
     exit
