@@ -1,22 +1,28 @@
 require 'date'
 
 class Item
-  # attr_accessor :genre
-  # attr_accessor :author
-  # attr_accessor :source
-  # attr_accessor :label
-  attr_reader :publish_date
-
-  attr_accessor :archived
+  attr_reader :genre, :author, :source, :label, :publish_date
 
   def initialize(id, publish_date: Date.today, archived: false)
     @id = id
-    # @genre = Genre.new()
-    # @author = Author.new()
-    # @source = Source.new()
-    # @label = Label.new()
     @publish_date = publish_date
     @archived = archived
+  end
+
+  def add_genre=(genre) 
+    @genre = genre
+  end
+
+  def add_author=(author)
+    @author = author
+  end
+
+  def add_source=(source)
+    @source = source
+  end
+
+  def add_label=(label)
+    @label = label
   end
 
   def move_to_archive
