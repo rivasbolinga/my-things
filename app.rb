@@ -1,5 +1,6 @@
 require_relative 'app-management/ui_class'
 require './list'
+require './create'
 
 class App
   def initialize
@@ -9,6 +10,7 @@ class App
       labels_list: []
     }
     @list = List.new
+    @create = Create.new
   end
 
   def run
@@ -71,7 +73,7 @@ class App
   end
 
   def create_book
-    puts 'You have selected 7 - Create a book'
+    @books_and_labels = @create.new_book(@books_and_labels)
   end
 
   def create_music_album
