@@ -1,4 +1,4 @@
-require_relative './app-management/ui_class'
+require_relative 'app-management/ui_class'
 
 class App
   def initialize
