@@ -3,31 +3,31 @@ require 'date'
 class Item
   attr_reader :genre, :author, :source, :label, :publish_date
 
-  def initialize(id, publish_date: Date.today, archived: false)
-    @id = id
+  def initialize(publish_date, archived: false)
+    # @id = id
     @publish_date = publish_date
     @archived = archived
   end
 
-  def add_genre=(genre)
+  def genre=(genre)
     @genre = genre
+    genre.items << self unless genre.Items.include?(self)
   end
 
-  def add_author=(author)
+  def author=(author)
     @author = author
   end
 
-  def add_source=(source)
+  def source=(source)
     @source = source
   end
 
-  def add_label=(label)
+  def label=(label)
     @label = label
   end
 
   def move_to_archive
     return unless can_be_archived?
-
     @archived = true
   end
 

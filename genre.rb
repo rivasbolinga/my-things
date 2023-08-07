@@ -1,5 +1,3 @@
-require './item.rb'
-
 class Genre
 
   def initialize(name)
@@ -9,7 +7,7 @@ class Genre
 
   def add_item=(item)
     item.genre = self
-    @items << item unless @items.include?(item)
+    @items << item
   end
 
 end
