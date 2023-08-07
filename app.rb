@@ -11,7 +11,7 @@ class App
     @create = Create.new
     @save = Save.new
     @open = Open.new
-    
+
     @books_and_labels = @open.books
   end
 
