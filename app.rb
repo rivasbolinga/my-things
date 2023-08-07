@@ -1,8 +1,14 @@
 require_relative 'app-management/ui_class'
+require './list'
 
 class App
   def initialize
     @ui = UI.new
+    @books_and_labels = {
+      books_list: [],
+      labels_list: []
+    }
+    @list = List.new
   end
 
   def run
@@ -41,7 +47,7 @@ class App
   end
 
   def list_all_books
-    puts 'You have selected 1 - List all books'
+    @list.books(@books_and_labels[:books_list])
   end
 
   def list_all_music_albums
@@ -57,7 +63,7 @@ class App
   end
 
   def list_all_labels
-    puts 'You have selected 5 - List all labels'
+    @list.labels(@books_and_labels[:labels_list])
   end
 
   def list_all_authors
