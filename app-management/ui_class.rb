@@ -7,7 +7,7 @@ class UI
 
   def options
     puts 'Please choose one of the following options:'
-    puts '.............................'
+    puts '...........................................'
     puts '1 - List all books'
     puts '2 - List all music albums'
     puts '3 - List all games'
