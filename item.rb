@@ -15,31 +15,19 @@ class Item
     # @author = Author.new()
     # @source = Source.new()
     # @label = Label.new()
-    @publish_date = publish_date.strftime('%Y-%m-%d')
+    @publish_date = publish_date
     @archived = archived
   end
 
   def move_to_archive
-    @archived = true if can_be_archived?
+    return unless can_be_archived?
+
+    @archived = true
   end
 
   private
 
   def can_be_archived?
-    year, month, day = @publish_date.split('-').map(&:to_i)
-    return true if (Date.today - Date.new(year, month, day)) / 365.25 > 10
-
-    false
+    Date.today - @publish_date >= 10 * 365.25
   end
 end
-
-item = Item.new(1, publish_date: Date.new(2013, 8, 6), archived: false)
-# p item.genre
-# p item.author
-# p item.source
-# p item.label
-
-p item.publish_date
-p item.archived
-p item.move_to_archive
-p item.archived
