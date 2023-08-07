@@ -5,5 +5,10 @@ class Game < Item
   end
 
   def can_be_archived?
+    if super
+      @last_played_at < (Date.today.year - 2)
+    else
+      false
+    end
   end
 end
