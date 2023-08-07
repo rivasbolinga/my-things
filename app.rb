@@ -2,17 +2,17 @@ require_relative 'app-management/ui_class'
 require './list'
 require './create'
 require './save'
+require './open'
 
 class App
   def initialize
     @ui = UI.new
-    @books_and_labels = {
-      books_list: [],
-      labels_list: []
-    }
     @list = List.new
     @create = Create.new
     @save = Save.new
+    @open = Open.new
+    
+    @books_and_labels = @open.books
   end
 
   def run
