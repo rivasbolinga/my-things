@@ -1,8 +1,18 @@
 require_relative 'app-management/ui_class'
+require './app-management/list'
+require './app-management/create'
+require './store-data/save'
+require './store-data/open'
 
 class App
   def initialize
     @ui = UI.new
+    @list = List.new
+    @create = Create.new
+    @save = Save.new
+    @open = Open.new
+
+    @books_and_labels = @open.books
   end
 
   def run
@@ -41,7 +51,7 @@ class App
   end
 
   def list_all_books
-    puts 'You have selected 1 - List all books'
+    @list.books(@books_and_labels[:books_list])
   end
 
   def list_all_music_albums
@@ -57,7 +67,7 @@ class App
   end
 
   def list_all_labels
-    puts 'You have selected 5 - List all labels'
+    @list.labels(@books_and_labels[:labels_list])
   end
 
   def list_all_authors
@@ -65,7 +75,7 @@ class App
   end
 
   def create_book
-    puts 'You have selected 7 - Create a book'
+    @books_and_labels = @create.new_book(@books_and_labels)
   end
 
   def create_music_album
@@ -77,6 +87,7 @@ class App
   end
 
   def exit_app
+    @save.books(@books_and_labels[:books_list])
     puts 'Exiting the application....'
     puts 'Goodbye!👋🏼'
     exit
