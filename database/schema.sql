@@ -18,9 +18,5 @@ ADD CONSTRAINT label_constraint
 FOREIGN KEY (label_id) 
 REFERENCES label (id);
 
-SELECT * FROM book
-WHERE AGE(CURRENT_DATE, publish_date) > INTERVAL '10 years' OR cover_state = 'bad';
-
-
 UPDATE book SET archived = TRUE
 WHERE AGE(CURRENT_DATE, publish_date) > INTERVAL '10 years' OR cover_state = 'bad';

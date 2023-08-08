@@ -9,7 +9,7 @@ class Open
     }
 
     return lists unless File.exist?('./data-files/books.json')
-
+    
     list = JSON.parse(File.read('./data-files/books.json'))
     list.each do |detail|
       book = Book.new(detail[0], detail[1], publish_date: Date.parse(detail[2]))
