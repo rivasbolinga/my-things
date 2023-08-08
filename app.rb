@@ -1,13 +1,17 @@
 require_relative 'app-management/ui_class'
 require './music_album.rb'
-require './read_data_files.rb'
+require './genre.rb'
+require_relative 'modules/read_data_files.rb'
+require_relative 'modules/display.rb'
 require 'json'
 
 class App
   def initialize
     @ui = UI.new
     @music_albums = []
-    @stored_music_albums = read_music_albums_json
+    @stored_music_albums = read_music_albums_json()
+    @stored_genres = 
+    @genres = []
   end
 
   def run
@@ -32,9 +36,10 @@ class App
       5 => method(:list_all_labels),
       6 => method(:list_all_authors),
       7 => method(:create_book),
-      8 => method(:add_music_album),
-      9 => method(:create_game),
-      10 => method(:exit_app)
+      8 => method(:add_genre),
+      9 => method(:add_music_album),
+      10 => method(:create_game),
+      11 => method(:exit_app)
     }
 
     action = actions[option]
@@ -51,10 +56,7 @@ class App
 
   def list_all_music_albums
     available_music_albums = @stored_music_albums + @music_albums
-    available_music_albums.select do |album|
-      puts "Genre: #{album['genre']}, Author: #{album['author']}, publish date: #{album['publish_date']}" if album.instance_of?(Hash)
-      puts "Genre: #{album.genre}, Author: #{album.author}, publish_date: #{album.publish_date}" if album.instance_of?(MusicAlbum)
-    end
+    display_music_albums_on_list_all_music_album(available_music_albums)
   end
 
   def list_all_games
@@ -62,7 +64,10 @@ class App
   end
 
   def list_all_genres
-    puts 'You have selected 4 - List all genres'
+    books.each_with_index do |book, i|
+      puts "#{i}) Title: \"#{book['title']}\", Author: #{book['author']}" if book.instance_of?(Hash)
+      puts "#{i}) Title: \"#{book.title}\", Author: #{book.author}" if book.instance_of?(Book)
+    end
   end
 
   def list_all_labels
@@ -75,6 +80,11 @@ class App
 
   def create_book
     puts 'You have selected 7 - Create a book'
+  end
+
+  def add_genre
+    print 'name: '
+    @genres << Genre.new(gets.chomp)
   end
 
   def add_music_album
