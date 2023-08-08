@@ -8,7 +8,7 @@ end
 def display_genres_on_list_all_genres(genres)
   genres.each do |genre|
     puts "Name: #{genre['name']}" if genre.instance_of?(Hash)
-    puts "Name: #{genre.name}" if book.instance_of?(Book)
+    puts "Name: #{genre.name}" if genre.instance_of?(Genre)
   end
 end
 

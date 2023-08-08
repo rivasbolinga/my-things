@@ -64,10 +64,7 @@ class App
   end
 
   def list_all_genres
-    books.each_with_index do |book, i|
-      puts "#{i}) Title: \"#{book['title']}\", Author: #{book['author']}" if book.instance_of?(Hash)
-      puts "#{i}) Title: \"#{book.title}\", Author: #{book.author}" if book.instance_of?(Book)
-    end
+    display_genres_on_list_all_genres(@genres)
   end
 
   def list_all_labels
