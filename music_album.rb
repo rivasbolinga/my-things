@@ -3,20 +3,9 @@ require './item'
 class MusicAlbum < Item
   attr_reader :on_spotify, :archived
 
-  def initialize(archived: false, on_spotify: false, publish_date: Date.today)
-    super(archived: archived, publish_date: publish_date)
+  def initialize(archived: false, on_spotify: false)
+    super(archived: archived)
     @on_spotify = on_spotify
-  end
-
-  def to_json(*args)
-    {
-      genre: @genre,
-      author: @author,
-      source: @source,
-      publish_date: @publish_date,
-      archived: @archived,
-      on_spotify: @on_spotify
-    }.to_json(*args)
   end
 
   private
