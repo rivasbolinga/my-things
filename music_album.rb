@@ -8,7 +8,16 @@ class MusicAlbum < Item
     @on_spotify = on_spotify
   end
 
-  
+  def to_json(*args)
+    {
+      genre: @genre,
+      author: @author,
+      source: @source,
+      publish_date: @publish_date,
+      archived: @archived,
+      on_spotify: @on_spotify
+    }.to_json(*args)
+  end
 
   private
 

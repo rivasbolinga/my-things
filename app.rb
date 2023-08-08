@@ -1,9 +1,13 @@
 require_relative 'app-management/ui_class'
 require './music_album.rb'
+require './read_data_files.rb'
+require 'json'
 
 class App
   def initialize
     @ui = UI.new
+    @music_albums = []
+    @stored_music_albums = read_music_albums_json
   end
 
   def run
@@ -86,7 +90,9 @@ class App
     else
       music_album = MusicAlbum.new(on_spotify: on_spotify)
     end
-    p music_album
+    @music_albums << music_album
+    @stored_music_albums += @music_albums
+    File.write('music_albums.json', JSON.generate(@stored_music_albums).to_s)
   end
 
   def create_game
