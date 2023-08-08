@@ -13,16 +13,4 @@ CREATE TABLE label (
   color VARCHAR(100)
 );
 
-ALTER TABLE book 
-ADD CONSTRAINT label_constraint
-FOREIGN KEY (label_id) 
-REFERENCES label (id);
-
-SELECT * FROM book 
-WHERE CURRENT_DATE - publish_date > INTERVAL '10 years' OR cover_state = 'bad' 
-AS can_be_archived;
-
-UPDATE book
-SET archived = TRUE
-WHERE CURRENT_DATE - publish_date > INTERVAL '10 years' OR cover_state = 'bad';
 
