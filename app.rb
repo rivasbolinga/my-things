@@ -3,6 +3,7 @@ require './app-management/list'
 require './app-management/create'
 require './store-data/save'
 require './store-data/open'
+require './app-management/create_game'
 
 class App
   def initialize
@@ -12,6 +13,7 @@ class App
     @save = Save.new
     @open = Open.new
     @books_and_labels = @open.books
+    @add_game = CreateGame.new
   end
 
   def run
@@ -83,7 +85,7 @@ class App
 
   def create_game
     puts 'You have selected 9 - Create a game'
-    @create.create_game
+    @add_game.create_game
   end
 
   def exit_app
