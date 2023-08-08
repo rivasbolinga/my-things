@@ -3,6 +3,7 @@ require './music_album.rb'
 require './genre.rb'
 require_relative 'modules/read_data_files.rb'
 require_relative 'modules/display.rb'
+require_relative 'modules/preserve_data.rb'
 require 'json'
 
 class App
@@ -10,7 +11,7 @@ class App
     @ui = UI.new
     @music_albums = []
     @stored_music_albums = read_music_albums_json()
-    @stored_genres = 
+    @stored_genres = read_genres_json()
     @genres = []
   end
 
@@ -64,7 +65,7 @@ class App
   end
 
   def list_all_genres
-    display_genres_on_list_all_genres(@genres)
+    display_genres_on_list_all_genres(@stored_genres + @genres)
   end
 
   def list_all_labels
@@ -109,8 +110,12 @@ class App
   end
 
   def exit_app
-    @stored_music_albums += @music_albums
-    File.write('music_albums.json', JSON.generate(@stored_music_albums).to_s)
+    preserve_music_albums_data(@stored_music_albums + @music_albums)
+    preserve_genres_data(@stored_genres + @genres)
+    # @stored_music_albums += @music_albums
+    # @stored_genres += @genres
+    # File.write('./data-files/music_albums.json', JSON.generate(@stored_music_albums).to_s)
+    # File.write('./data-files/genres.json', JSON.generate(@stored_genres).to_s)
     puts 'Exiting the application....'
     puts 'Goodbye!👋🏼'
     exit

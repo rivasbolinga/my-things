@@ -15,7 +15,7 @@ class UI
     puts '5 - List all labels'
     puts '6 - List all authors'
     puts '7 - Create a book'
-    puts '8 - Add a genre'
+    puts '8 - Create a genre'
     puts '9 - Create a music album'
     puts '10 - Create a game'
     puts '11 - Exit'
