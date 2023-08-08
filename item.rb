@@ -9,7 +9,7 @@ class Item
     @archived = archived
   end
 
-  def add_genre=(genre)
+  def genre=(genre)
     @genre = genre
   end
 
