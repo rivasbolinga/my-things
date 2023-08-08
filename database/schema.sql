@@ -22,3 +22,6 @@ SELECT * FROM book
 WHERE CURRENT_DATE - publish_date > INTERVAL '10 years' OR cover_state = 'bad' 
 AS can_be_archived;
 
+UPDATE book
+SET archived = TRUE
+WHERE CURRENT_DATE - publish_date > INTERVAL '10 years' OR cover_state = 'bad';
