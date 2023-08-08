@@ -1,5 +1,4 @@
 class Genre
-
   def initialize(name)
     @name = name
     @items = []
@@ -9,5 +8,4 @@ class Genre
     item.genre = self
     @items << item
   end
-
 end

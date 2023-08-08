@@ -1,5 +1,5 @@
-require './item.rb'
-require './music_album.rb'
+require './item'
+require './music_album'
 
 RSpec.describe MusicAlbum do
   let(:publish_date) { Date.new(2023, 1, 1) }
@@ -28,7 +28,6 @@ RSpec.describe MusicAlbum do
       let(:on_spotify) { true }
 
       it 'returns true' do
-        puts music_album.archived
         expect(music_album.send(:can_be_archived?)).to be true
       end
     end
