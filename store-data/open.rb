@@ -8,9 +8,9 @@ class Open
       labels_list: []
     }
 
-    return lists unless File.exist?('books.json')
+    return lists unless File.exist?('./data-files/books.json')
 
-    list = JSON.parse(File.read('books.json'))
+    list = JSON.parse(File.read('./data-files/books.json'))
     list.each do |detail|
       book = Book.new(detail[0], detail[1], publish_date: Date.parse(detail[2]))
       saved_label = lists[:labels_list].find { |label| label.title == detail[3] }

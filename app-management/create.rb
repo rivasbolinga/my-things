@@ -20,6 +20,7 @@ class Create
     end
     saved_label.add_item(book)
     lists[:books_list] << book
+    puts 'Book was created successfully'
     lists
   end
 
