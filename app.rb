@@ -1,8 +1,8 @@
 require_relative 'app-management/ui_class'
-require './list'
-require './create'
-require './save'
-require './open'
+require './app-management/list'
+require './app-management/create'
+require './store-data/save'
+require './store-data/open'
 
 class App
   def initialize

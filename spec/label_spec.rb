@@ -1,4 +1,4 @@
-require_relative '../label'
+require_relative '../classes/label'
 
 describe Label do
   context '#new' do

@@ -1,5 +1,5 @@
-require './book'
-require './label'
+require_relative '../classes/book'
+require_relative '../classes/label'
 
 class Create
   def new_book(lists)
