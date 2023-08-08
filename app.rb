@@ -50,7 +50,11 @@ class App
   end
 
   def list_all_music_albums
-    puts 'You have selected 2 - List all music albums'
+    available_music_albums = @stored_music_albums + @music_albums
+    available_music_albums.select do |album|
+      puts "Genre: #{album['genre']}, Author: #{album['author']}, publish date: #{album['publish_date']}" if album.instance_of?(Hash)
+      puts "Genre: #{album.genre}, Author: #{album.author}, publish_date: #{album.publish_date}" if album.instance_of?(MusicAlbum)
+    end
   end
 
   def list_all_games
@@ -91,8 +95,6 @@ class App
       music_album = MusicAlbum.new(on_spotify: on_spotify)
     end
     @music_albums << music_album
-    @stored_music_albums += @music_albums
-    File.write('music_albums.json', JSON.generate(@stored_music_albums).to_s)
   end
 
   def create_game
@@ -100,6 +102,8 @@ class App
   end
 
   def exit_app
+    @stored_music_albums += @music_albums
+    File.write('music_albums.json', JSON.generate(@stored_music_albums).to_s)
     puts 'Exiting the application....'
     puts 'Goodbye!👋🏼'
     exit
