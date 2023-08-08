@@ -5,7 +5,7 @@ class Genre
   end
 
   def add_item=(item)
-    item.add_genre = self
+    item.add_genre = self unles item.genre == self
     @items << item
   end
 end

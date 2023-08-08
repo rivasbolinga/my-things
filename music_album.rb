@@ -3,10 +3,12 @@ require './item'
 class MusicAlbum < Item
   attr_reader :on_spotify, :archived
 
-  def initialize(archived: false, on_spotify: false)
-    super(archived: archived)
+  def initialize(archived: false, on_spotify: false, publish_date: Date.today)
+    super(archived: archived, publish_date: publish_date)
     @on_spotify = on_spotify
   end
+
+  
 
   private
 

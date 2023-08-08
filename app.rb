@@ -1,4 +1,5 @@
 require_relative 'app-management/ui_class'
+require './music_album.rb'
 
 class App
   def initialize
@@ -27,7 +28,7 @@ class App
       5 => method(:list_all_labels),
       6 => method(:list_all_authors),
       7 => method(:create_book),
-      8 => method(:create_music_album),
+      8 => method(:add_music_album),
       9 => method(:create_game),
       10 => method(:exit_app)
     }
@@ -68,8 +69,24 @@ class App
     puts 'You have selected 7 - Create a book'
   end
 
-  def create_music_album
-    puts 'You have selected 8 - Create a music album'
+  def add_music_album
+    print 'publish_date [YYYY/MM/DD]: '
+    ans = gets.chomp
+    pattern = /\A\d{4}\/\d{2}\/\d{2}\z/
+    # ans should not be empty and meet YYYY/MM/DD format
+    publish_date = Date.parse(ans) if !ans.empty? && pattern.match(ans)
+
+    print 'On spotify? [Y/N]: '
+    ans = gets.chomp
+    on_spotify = true if ans.downcase == 'y'|| ans.upcase == 'Y'
+    on_spotify = false if ans.downcase == 'n'|| ans.upcase == 'N'
+
+    if publish_date
+      music_album = MusicAlbum.new(publish_date: publish_date, on_spotify: on_spotify)
+    else
+      music_album = MusicAlbum.new(on_spotify: on_spotify)
+    end
+    p music_album
   end
 
   def create_game
