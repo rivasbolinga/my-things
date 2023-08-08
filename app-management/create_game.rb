@@ -1,15 +1,17 @@
 require_relative '../classes/game_class'
+require_relative '../store-data/manage_game'
 require 'date'
 
 class CreateGame
   def initialize
     @games = []
+    @data_manager = ManageData.new
   end
 
   def create_game
     print 'Multiplayer: '
     multiplayer = gets.chomp
-    last_played_at = nil  # Initialize last_played_at to nil
+    last_played_at = nil
 
     loop do
       print 'Last time played [YYYY-MM-DD]: '
@@ -21,6 +23,11 @@ class CreateGame
     new_game = Game.new(multiplayer, last_played_at)
     @games.push(new_game)
     puts '🟢 Game created successfully!!'
+    hased = @data_manager.convert_game_to_hash(@games)
+     #list
+     #store
+    
+    
   end
 
   def parse_date_input(date_input)
