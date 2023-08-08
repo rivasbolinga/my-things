@@ -13,4 +13,8 @@ CREATE TABLE label (
   color VARCHAR(100)
 );
 
+ALTER TABLE book 
+ADD CONSTRAINT label_constraint
+FOREIGN KEY (label_id) 
+REFERENCES label (id);
 
