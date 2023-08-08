@@ -1,18 +1,18 @@
 require_relative 'app-management/ui_class'
-require './music_album.rb'
-require './genre.rb'
-require_relative 'modules/read_data_files.rb'
-require_relative 'modules/display.rb'
-require_relative 'modules/preserve_data.rb'
-require_relative 'modules/procedures.rb'
+require './music_album'
+require './genre'
+require_relative 'modules/read_data_files'
+require_relative 'modules/display'
+require_relative 'modules/preserve_data'
+require_relative 'modules/procedures'
 require 'json'
 
 class App
   def initialize
     @ui = UI.new
     @music_albums = []
-    @stored_music_albums = read_music_albums_json()
-    @stored_genres = read_genres_json()
+    @stored_music_albums = read_music_albums_json
+    @stored_genres = read_genres_json
     @genres = []
   end
 
@@ -93,22 +93,20 @@ class App
 
     print 'publish_date [YYYY/MM/DD]: '
     ans = gets.chomp
-    pattern = /\A\d{4}\/\d{2}\/\d{2}\z/
+    pattern = %r{\A\d{4}/\d{2}/\d{2}\z}
     # ans should not be empty and meet YYYY/MM/DD format
     publish_date = Date.parse(ans) if !ans.empty? && pattern.match(ans)
 
     print 'On spotify? [Y/N]: '
     ans = gets.chomp
-    on_spotify = true if ans.downcase == 'y'|| ans.upcase == 'Y'
-    on_spotify = false if ans.downcase == 'n'|| ans.upcase == 'N'
+    on_spotify = true if ans.downcase == 'y' || ans.upcase == 'Y'
 
-    if publish_date
-      music_album = MusicAlbum.new(publish_date: publish_date, on_spotify: on_spotify)
-      music_album_genre(selected_genre, music_album)
-    else
-      music_album = MusicAlbum.new(on_spotify: on_spotify)
-      music_album_genre(selected_genre, music_album)
-    end
+    music_album = if publish_date && on_spotify
+                    MusicAlbum.new(publish_date: publish_date, on_spotify: on_spotify)
+                  else
+                    MusicAlbum.new
+                  end
+    music_album_genre(selected_genre, music_album)
     @music_albums << music_album
   end
 
@@ -119,10 +117,6 @@ class App
   def exit_app
     preserve_music_albums_data(@stored_music_albums + @music_albums)
     preserve_genres_data(@stored_genres + @genres)
-    # @stored_music_albums += @music_albums
-    # @stored_genres += @genres
-    # File.write('./data-files/music_albums.json', JSON.generate(@stored_music_albums).to_s)
-    # File.write('./data-files/genres.json', JSON.generate(@stored_genres).to_s)
     puts 'Exiting the application....'
     puts 'Goodbye!👋🏼'
     exit

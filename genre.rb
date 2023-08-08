@@ -7,7 +7,7 @@ class Genre
   end
 
   def add_item=(item)
-    item.add_genre = self unless item.genre == self
+    item.add_genre = self
     @items << item
   end
 
@@ -17,5 +17,4 @@ class Genre
       items: @items
     }.to_json(*args)
   end
-
 end

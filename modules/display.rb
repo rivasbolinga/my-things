@@ -1,7 +1,11 @@
 def display_music_albums_on_list_all_music_album(music_albums)
   music_albums.select do |album|
-    puts "Genre: #{album['genre']['name']}, Author: #{album['author']}, publish date: #{album['publish_date']}" if album.instance_of?(Hash)
-    puts "Genre: #{album.genre.name}, Author: #{album.author}, publish_date: #{album.publish_date}" if album.instance_of?(MusicAlbum)
+    if album.instance_of?(Hash)
+      puts "Genre: #{album['genre']['name']}, Author: #{album['author']}, publish date: #{album['publish_date']}"
+    end
+    if album.instance_of?(MusicAlbum)
+      puts "Genre: #{album.genre.name}, Author: #{album.author}, publish_date: #{album.publish_date}"
+    end
   end
 end
 
