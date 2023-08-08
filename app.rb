@@ -6,6 +6,11 @@ require_relative 'modules/display'
 require_relative 'modules/preserve_data'
 require_relative 'modules/procedures'
 require 'json'
+require './app-management/list'
+require './app-management/create'
+require './store-data/save'
+require './store-data/open'
+
 
 class App
   def initialize
@@ -14,6 +19,13 @@ class App
     @stored_music_albums = read_music_albums_json
     @stored_genres = read_genres_json
     @genres = []
+
+    @list = List.new
+    @create = Create.new
+    @save = Save.new
+    @open = Open.new
+
+    @books_and_labels = @open.books
   end
 
   def run
@@ -53,7 +65,7 @@ class App
   end
 
   def list_all_books
-    puts 'You have selected 1 - List all books'
+    @list.books(@books_and_labels[:books_list])
   end
 
   def list_all_music_albums
@@ -70,7 +82,7 @@ class App
   end
 
   def list_all_labels
-    puts 'You have selected 5 - List all labels'
+    @list.labels(@books_and_labels[:labels_list])
   end
 
   def list_all_authors
@@ -78,7 +90,7 @@ class App
   end
 
   def create_book
-    puts 'You have selected 7 - Create a book'
+    @books_and_labels = @create.new_book(@books_and_labels)
   end
 
   def add_genre
@@ -115,8 +127,10 @@ class App
   end
 
   def exit_app
+
     preserve_music_albums_data(@stored_music_albums + @music_albums)
     preserve_genres_data(@stored_genres + @genres)
+    @save.books(@books_and_labels[:books_list])
     puts 'Exiting the application....'
     puts 'Goodbye!👋🏼'
     exit
