@@ -14,7 +14,7 @@ class Genre
   def to_json(*args)
     {
       name: @name,
-      item: @items
+      items: @items
     }.to_json(*args)
   end
 

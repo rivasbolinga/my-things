@@ -4,6 +4,7 @@ require './genre.rb'
 require_relative 'modules/read_data_files.rb'
 require_relative 'modules/display.rb'
 require_relative 'modules/preserve_data.rb'
+require_relative 'modules/procedures.rb'
 require 'json'
 
 class App
@@ -86,6 +87,10 @@ class App
   end
 
   def add_music_album
+    puts 'select a genre from the list below by number:'
+    display_genres_on_add_music_album(@stored_genres + @genres)
+    selected_genre = (@stored_genres + @genres)[gets.chomp.to_i]
+
     print 'publish_date [YYYY/MM/DD]: '
     ans = gets.chomp
     pattern = /\A\d{4}\/\d{2}\/\d{2}\z/
@@ -99,8 +104,10 @@ class App
 
     if publish_date
       music_album = MusicAlbum.new(publish_date: publish_date, on_spotify: on_spotify)
+      music_album_genre(selected_genre, music_album)
     else
       music_album = MusicAlbum.new(on_spotify: on_spotify)
+      music_album_genre(selected_genre, music_album)
     end
     @music_albums << music_album
   end
