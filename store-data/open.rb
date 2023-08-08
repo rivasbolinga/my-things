@@ -15,13 +15,17 @@ class Open
       book = Book.new(detail[0], detail[1], publish_date: Date.parse(detail[2]))
       saved_label = lists[:labels_list].find { |label| label.title == detail[3] }
       unless saved_label
-        colors = %w[Red Green Blue Yellow Orange Purple]
-        saved_label = Label.new(detail[3], colors.sample)
+        saved_label = new_label(detail[3])
         lists[:labels_list] << saved_label
       end
       saved_label.add_item(book)
       lists[:books_list] << book
     end
     lists
+  end
+
+  def new_label(label)
+    colors = %w[Red Green Blue Yellow Orange Purple]
+    Label.new(label, colors.sample)
   end
 end

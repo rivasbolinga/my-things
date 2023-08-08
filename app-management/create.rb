@@ -15,13 +15,16 @@ class Create
     book = Book.new(publisher, cover_state, publish_date: publish_date)
     saved_label = lists[:labels_list].find { |label| label.title == label_title }
     unless saved_label
-      colors = %w[Red Green Blue Yellow Orange Purple]
-      saved_label = Label.new(label_title, colors.sample)
+      saved_label = new_label(label_title)
       lists[:labels_list] << saved_label
     end
     saved_label.add_item(book)
-    puts 'Press Enter to continue!'
     lists[:books_list] << book
     lists
+  end
+
+  def new_label(label)
+    colors = %w[Red Green Blue Yellow Orange Purple]
+    Label.new(label, colors.sample)
   end
 end
