@@ -7,6 +7,5 @@ class ManageData
           last_played_at: game.last_played_at.to_s
         }
   end
-  puts games_hash
 end
 end
