@@ -8,12 +8,6 @@ class MusicAlbum < Item
     @on_spotify = on_spotify
   end
 
-  private
-
-  def can_be_archived?
-    @archived && @on_spotify ? true : false
-  end
-
   def to_json(*args)
     {
       genre: @genre,
@@ -25,4 +19,9 @@ class MusicAlbum < Item
     }.to_json(*args)
   end
 
+  private
+
+  def can_be_archived?
+    @archived && @on_spotify ? true : false
+  end
 end
