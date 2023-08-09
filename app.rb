@@ -4,6 +4,7 @@ require './app-management/create'
 require './store-data/save'
 require './store-data/open'
 require './app-management/create_game'
+require './app-management/list_game'
 
 class App
   def initialize
@@ -14,6 +15,7 @@ class App
     @open = Open.new
     @books_and_labels = @open.books
     @add_game = CreateGame.new
+    @list_game = ListGame.new
   end
 
   def run
@@ -59,8 +61,9 @@ class App
     puts 'You have selected 2 - List all music albums'
   end
 
-  def list_all_games
-
+  def list_all_games; 
+    puts 'You have selected 3 - List all games'
+    @list_game.list_games
   end
 
   def list_all_genres

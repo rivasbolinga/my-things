@@ -1,12 +1,10 @@
 require_relative '../classes/game_class'
-require_relative '../store-data/manage_game'
 require_relative '../store-data/save_game'
 require 'date'
 
 class CreateGame
   def initialize
     @games = []
-    @data_manager = ManageData.new
     @data_storage = StoreGame.new
   end
 
@@ -25,12 +23,8 @@ class CreateGame
     new_game = Game.new(multiplayer, last_played_at)
     @games.push(new_game)
     puts '🟢 Game created successfully!!'
-    hashed = @data_manager.convert_game_to_hash(@games)
-    stored = @data_storage.store_game(hashed)
-     #list
-     #store
-    
-    
+    puts 'Storing....'
+    @data_storage.store_game(@games)
   end
 
   def parse_date_input(date_input)
