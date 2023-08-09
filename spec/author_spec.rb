@@ -1,9 +1,9 @@
-require_relative '../classes/author_class' 
+require_relative '../classes/author_class'
 require_relative '../item'
-  
+
 describe Author do
   before :each do
-    @author= Author.new('Stephen', 'King')
+    @author = Author.new('Stephen', 'King')
     @item = Item.new
   end
 
