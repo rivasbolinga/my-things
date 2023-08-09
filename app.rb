@@ -5,7 +5,7 @@ require './store-data/save'
 require './store-data/open'
 require './app-management/create_game'
 require './app-management/list_game'
-
+require './app-management/list_authors'
 class App
   def initialize
     @ui = UI.new
@@ -16,6 +16,7 @@ class App
     @books_and_labels = @open.books
     @add_game = CreateGame.new
     @list_game = ListGame.new
+    @list_all_authors = ListAuthors.new
   end
 
   def run
@@ -76,6 +77,7 @@ class App
 
   def list_all_authors
     puts 'You have selected 6 - List all authors'
+    @list_all_authors.list_authors
   end
 
   def create_book
