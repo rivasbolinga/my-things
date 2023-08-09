@@ -9,3 +9,9 @@ CREATE TABLE items (
   publish_date DATE,
   archived BOOLEAN
 );
+
+CREATE TABLE music_albums (
+  item_id INTEGER PRIMARY KEY,
+  on_spotify BOOLEAN,
+  FOREIGN KEY (item_id) REFERENCES items(id)
+);
