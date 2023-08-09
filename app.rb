@@ -70,6 +70,7 @@ class App
   def list_all_music_albums
     available_music_albums = @stored_music_albums + @music_albums
     display_music_albums_on_list_all_music_album(available_music_albums)
+    puts ''
   end
 
   def list_all_games
@@ -78,6 +79,7 @@ class App
 
   def list_all_genres
     display_genres_on_list_all_genres(@stored_genres + @genres)
+    puts ''
   end
 
   def list_all_labels
@@ -93,18 +95,12 @@ class App
   end
 
   def add_music_album
-    selected_genre = nil
+    # selected_genre = nil
     puts 'select a genre from the list below by number:'
     display_genres_on_add_music_album(@stored_genres + @genres)
-    puts 'or'
-    print 'Enter a new genre name: '
+    print 'Or enter a new genre name: '
     ans = gets.chomp
-    if ans != "0" && ans.to_i == 0
-      selected_genre = Genre.new(ans)
-      @genres << selected_genre
-    else
-      selected_genre = (@stored_genres + @genres)[ans.to_i]
-    end
+    selected_genre = music_album_select_genre(ans, @genres, @stored_genres)
 
     print 'publish_date [YYYY/MM/DD]: '
     ans = gets.chomp
@@ -116,13 +112,12 @@ class App
     ans = gets.chomp
     on_spotify = true if ans.downcase == 'y' || ans.upcase == 'Y'
 
-    music_album = if publish_date && on_spotify
-                    MusicAlbum.new(publish_date: publish_date, on_spotify: on_spotify)
-                  else
-                    MusicAlbum.new
-                  end
+    music_album = instanciate_a_music_album(publish_date, on_spotify)
+
     music_album_genre(selected_genre, music_album)
     @music_albums << music_album
+    puts 'Music Album created successfully!'
+    puts ''
   end
 
   def create_game
