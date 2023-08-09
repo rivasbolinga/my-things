@@ -13,6 +13,3 @@ def read_genres_json
     []
   end
 end
-
-
-qqqqq

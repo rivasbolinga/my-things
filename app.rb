@@ -50,10 +50,9 @@ class App
       5 => method(:list_all_labels),
       6 => method(:list_all_authors),
       7 => method(:create_book),
-      8 => method(:add_genre),
-      9 => method(:add_music_album),
-      10 => method(:create_game),
-      11 => method(:exit_app)
+      8 => method(:add_music_album),
+      9 => method(:create_game),
+      10 => method(:exit_app)
     }
 
     action = actions[option]
@@ -93,15 +92,19 @@ class App
     @books_and_labels = @create.new_book(@books_and_labels)
   end
 
-  def add_genre
-    print 'name: '
-    @genres << Genre.new(gets.chomp)
-  end
-
   def add_music_album
+    selected_genre = nil
     puts 'select a genre from the list below by number:'
     display_genres_on_add_music_album(@stored_genres + @genres)
-    selected_genre = (@stored_genres + @genres)[gets.chomp.to_i]
+    puts 'or'
+    print 'Enter a new genre name: '
+    ans = gets.chomp
+    if ans != "0" && ans.to_i == 0
+      selected_genre = Genre.new(ans)
+      @genres << selected_genre
+    else
+      selected_genre = (@stored_genres + @genres)[ans.to_i]
+    end
 
     print 'publish_date [YYYY/MM/DD]: '
     ans = gets.chomp
