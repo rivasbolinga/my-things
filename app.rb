@@ -11,14 +11,13 @@ require './app-management/create'
 require './store-data/save'
 require './store-data/open'
 
-
 class App
   def initialize
     @ui = UI.new
-    @music_albums = [] mmm
-    @stored_music_albums = read_music_albums_json www
-    @stored_genres = read_genres_json wwww
-    @genres = [] wwww
+    @music_albums = []
+    @stored_music_albums = read_music_albums_json
+    @stored_genres = read_genres_json
+    @genres = []
 
     @list = List.new
     @create = Create.new

@@ -23,4 +23,3 @@ def display_genres_on_add_music_album(genres)
     puts "#{i}) Name: #{genre.name}" if genre.instance_of?(Genre)
   end
 end
-ccc

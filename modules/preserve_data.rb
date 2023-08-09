@@ -9,4 +9,3 @@ def preserve_genres_data(genres)
 
   File.write('./data-files/genres.json', JSON.generate(genres).to_s)
 end
-cc
