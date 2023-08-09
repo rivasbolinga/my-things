@@ -1,6 +1,6 @@
 require_relative 'app-management/ui_class'
-require './music_album'
-require './genre'
+require_relative 'classes/music_album'
+require_relative 'classes/genre'
 require_relative 'modules/read_data_files'
 require_relative 'modules/display'
 require_relative 'modules/preserve_data'
@@ -127,7 +127,6 @@ class App
   end
 
   def exit_app
-
     preserve_music_albums_data(@stored_music_albums + @music_albums)
     preserve_genres_data(@stored_genres + @genres)
     @save.books(@books_and_labels[:books_list])

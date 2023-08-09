@@ -1,4 +1,4 @@
-require './genre'
+require_relative '../classes/genre'
 
 RSpec.describe Genre do
   let(:genre_name) { 'Action' }
