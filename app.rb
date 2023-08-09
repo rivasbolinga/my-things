@@ -61,7 +61,7 @@ class App
     puts 'You have selected 2 - List all music albums'
   end
 
-  def list_all_games; 
+  def list_all_games
     puts 'You have selected 3 - List all games'
     @list_game.list_games
   end

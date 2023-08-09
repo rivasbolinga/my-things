@@ -5,9 +5,7 @@ class StoreGame
     existing_data = []
 
     begin
-      if File.exist?('./data-files/games.json')
-        existing_data = JSON.parse(File.read('./data-files/games.json'))
-      end
+      existing_data = JSON.parse(File.read('./data-files/games.json')) if File.exist?('./data-files/games.json')
 
       hashed_data = games.map do |game|
         {
@@ -26,4 +24,3 @@ class StoreGame
     end
   end
 end
-
