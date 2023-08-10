@@ -1,0 +1,43 @@
+[
+  {
+    "author_name": "alba",
+    "author_last_name": "lopez",
+    "items": [
+      "House",
+      "Car"
+    ]
+  },
+  {
+    "author_name": "Belinda",
+    "author_last_name": "Gojon",
+    "items": [
+      "Bed",
+      "Book",
+      "Suitcase",
+      "Car"
+    ]
+  },
+  {
+    "author_name": "Ana",
+    "author_last_name": "Palacios",
+    "items": [
+      "Computer",
+      "Headphones"
+    ]
+  },
+  {
+    "author_name": "Ana",
+    "author_last_name": "Lopez",
+    "items": [
+
+    ]
+  },
+  {
+    "author_name": "Lionel",
+    "author_last_name": "Hojos",
+    "items": [
+      "Cup",
+      "coffee"
+    ]
+  }
+]

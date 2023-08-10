@@ -1,4 +1,5 @@
 require_relative '../classes/book'
+require_relative '../classes/game_class'
 require_relative '../classes/label'
 
 class Create
