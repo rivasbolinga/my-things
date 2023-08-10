@@ -1,0 +1,140 @@
+require_relative 'app-management/ui_class'
+require_relative 'classes/music_album'
+require_relative 'classes/genre'
+require_relative 'modules/read_data_files'
+require_relative 'modules/display'
+require_relative 'modules/preserve_data'
+require_relative 'modules/procedures'
+require 'json'
+require './app-management/list'
+require './app-management/create'
+require './store-data/save'
+require './store-data/open'
+require './app-management/create_game'
+require './app-management/list_game_author'
+
+class App
+  def initialize
+    @ui = UI.new
+    @music_albums = []
+    @stored_music_albums = read_music_albums_json
+    @stored_genres = read_genres_json
+    @genres = []
+
+    @list = List.new
+    @create = Create.new
+    @save = Save.new
+    @open = Open.new
+    @books_and_labels = @open.books
+    @add_game = CreateGame.new
+    @data_listings = ListData.new
+  end
+
+  def run
+    @ui.welcome
+    loop do
+      @ui.options
+      option = gets.chomp
+      break if option.downcase == 'exit'
+
+      apply_option(option.to_i)
+    end
+    exit_app
+  end
+
+  # To be completed later on ↓
+  def apply_option(option)
+    actions = {
+      1 => method(:list_all_books),
+      2 => method(:list_all_music_albums),
+      3 => method(:list_all_games),
+      4 => method(:list_all_genres),
+      5 => method(:list_all_labels),
+      6 => method(:list_all_authors),
+      7 => method(:create_book),
+      8 => method(:add_music_album),
+      9 => method(:create_game),
+      10 => method(:exit_app)
+    }
+
+    action = actions[option]
+    if action
+      action.call
+    else
+      puts '❌ Sorry! You have to select one of the options'
+    end
+  end
+
+  def list_all_books
+    @list.books(@books_and_labels[:books_list])
+  end
+
+  def list_all_music_albums
+    available_music_albums = @stored_music_albums + @music_albums
+    display_music_albums_on_list_all_music_album(available_music_albums)
+    puts ''
+  end
+
+  def list_all_games
+    puts 'You have selected 3 - List all games'
+    @data_listings.list_games
+  end
+
+  def list_all_genres
+    display_genres_on_list_all_genres(@stored_genres + @genres)
+    puts ''
+  end
+
+  def list_all_labels
+    @list.labels(@books_and_labels[:labels_list])
+  end
+
+  def list_all_authors
+    puts 'You have selected 6 - List all authors'
+    @data_listings.list_authors
+  end
+
+  def create_book
+    @books_and_labels = @create.new_book(@books_and_labels)
+  end
+
+  def add_music_album
+    # selected_genre = nil
+    puts 'select a genre from the list below by number:'
+    display_genres_on_add_music_album(@stored_genres + @genres)
+    print 'Or enter a new genre name: '
+    ans = gets.chomp
+    selected_genre = music_album_select_genre(ans, @genres, @stored_genres)
+
+    print 'publish_date [YYYY/MM/DD]: '
+    ans = gets.chomp
+    pattern = %r{\A\d{4}/\d{2}/\d{2}\z}
+    # ans should not be empty and meet YYYY/MM/DD format
+    publish_date = Date.parse(ans) if !ans.empty? && pattern.match(ans)
+
+    print 'On spotify? [Y/N]: '
+    ans = gets.chomp
+    on_spotify = true if ans.downcase == 'y' || ans.upcase == 'Y'
+
+    music_album = instanciate_a_music_album(publish_date, on_spotify)
+
+    music_album_genre(selected_genre, music_album)
+    @music_albums << music_album
+    puts 'Music Album created successfully!'
+    puts ''
+  end
+
+  def create_game
+    puts 'You have selected 9 - Create a game'
+    @add_game.create_game
+  end
+
+  def exit_app
+    preserve_music_albums_data(@stored_music_albums + @music_albums)
+    preserve_genres_data(@stored_genres + @genres)
+    @save.books(@books_and_labels[:books_list])
+    puts 'Exiting the application....'
+    puts 'Goodbye!👋🏼'
+    exit
+  end
+end
