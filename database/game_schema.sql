@@ -20,3 +20,8 @@ CREATE TABLE Game (
   archived BOOLEAN,
   FOREIGN KEY (id) REFERENCES Items(id)
 );
+
+UPDATE Game
+SET archived = true
+WHERE publish_date <= CURRENT_DATE - INTERVAL '10 years'
+AND last_played_at <= CURRENT_DATE - INTERVAL '2 years';
