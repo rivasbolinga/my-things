@@ -24,5 +24,20 @@
       "Computer",
       "Headphones"
     ]
+  },
+  {
+    "author_name": "Ana",
+    "author_last_name": "Lopez",
+    "items": [
+
+    ]
+  },
+  {
+    "author_name": "Lionel",
+    "author_last_name": "Hojos",
+    "items": [
+      "Cup",
+      "coffee"
+    ]
   }
 ]

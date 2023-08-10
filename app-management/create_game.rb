@@ -16,10 +16,15 @@ class CreateGame
   end
 
   def create_game
+    reset_arrays
     create_game_data
-    create_author_data
     store_data(@game_data_storage, @games)
+
+    reset_arrays
+    create_author_data
     store_data(@author_data_storage, @authors)
+    puts '🟢 Games created successfully!'
+    puts '🟢 Authors created successfully!'
   end
 
   private
@@ -35,7 +40,6 @@ class CreateGame
       publish_date: publish_date.to_s
     }
     @games.push(new_game)
-    puts '🟢 Game created successfully!'
   end
 
   def create_author_data
@@ -54,7 +58,6 @@ class CreateGame
       items: items
     }
     @authors.push(new_author)
-    puts '🟢 Author created successfully!'
   end
 
   def input_value(prompt)
