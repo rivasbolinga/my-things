@@ -3,7 +3,7 @@
   <img src="diagram.png" alt="logo"/>
   <br/>
 
-  <h3><b>Ruby Group Capstone: Catalog of My Things</b></h3>
+  <h1><b>Ruby Group Capstone: Catalog of My Things</b></h3>
 
 </div>
 
@@ -15,6 +15,7 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
+- [🎥 Video Demonstration](#video-demo)
 - [💻 Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Setup](#setup)
@@ -57,10 +58,20 @@
 
 ### Key Features <a name="key-features"></a>
 
-- **Create Books, Music Albums, and Games list**
-- **Preserve data**
-- **Tracking Data**
+- **1 - User interface where the user can choose between a variety of options**
 
+  <img width="324" alt="Screenshot 2023-08-10 at 16 31 22" src="https://github.com/rivasbolinga/my-things/assets/103900838/87980c2d-ee84-4ebf-865d-fa9654be1053">
+
+- **2 - All the data is preserved in json files**
+- **3 - Create as part of a collaborative project**
+- **4 - All data is stored in a database**
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- VIDEO DEMOSTRATION -->
+
+## 🎥 Video Demonstration <a name="video-demo"></a>
+
+You can see the Video demonstration 📍 [here](https://drive.google.com/file/d/14dWnvrkjP_HJmiHlXhU5cZ7rqrKxrs2x/view?usp=sharing).
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
@@ -85,7 +96,7 @@ Clone this repository to your desired folder:
   cd my-folder
   git https://github.com/rivasbolinga/my-things.git
 ```
--
+
 
 ### Install
 
@@ -93,10 +104,10 @@ Install this project with:
 
 
 ```sh
-  cd my-project
+  cd my-things
   bundle install
 ```
--
+
 
 ### Usage
 
@@ -122,22 +133,21 @@ To run tests, run the following command:
 
 ## 👥 Authors <a name="authors"></a>
 
-> Mention all of the collaborators of this project.
 
-👤 **Author1**
+👤 **Andrea Rivas**
 
 - GitHub: [@rivasbolinga](https://github.com/rivasbolinga)
 - Twitter: [@AndreaRivasPal](https://twitter.com/AndreaRivasPal)
 - LinkedIn: [andrearivaspalacios](https://www.linkedin.com/in/andrearivaspalacios/)
 
-👤 **Author2**
+👤 **Christian Romuald Momo Tonfack**
 
 - GitHub: [@momo-87](https://github.com/momo-87)
 - Twitter: [@Momo-yde](https://twitter.com/Momo_yde)
 - LinkedIn: [christian-momo](https://www.linkedin.com/in/christian-momo/)
 
 
-👤 **Author3**
+👤 **Mohamad Almeari**
 
 - GitHub: [@mohametalmeari](https://github.com/mohametalmeari)
 - Twitter: [@MohametAlmeari](https://twitter.com/MohametAlmeari)
@@ -149,9 +159,9 @@ To run tests, run the following command:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [] **Add Movies**
-- [] **Remove a selected book**
-- [] **Add genre to selected book**
+- **Add Movie class**
+- **Remove and update options**
+- **Create more relationships between the classes**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
