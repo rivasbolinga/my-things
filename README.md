@@ -1,6 +1,5 @@
 <a name="readme-top"></a>
 <div align="center">
-  <!-- You are encouraged to replace this logo with your own! Otherwise you can also remove it. -->
   <img src="diagram.png" alt="logo"/>
   <br/>
 
@@ -16,20 +15,17 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
-  <!-- - [🚀 Live Demo](#live-demo) -->
 - [💻 Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Setup](#setup)
   - [Install](#install)
   - [Usage](#usage)
   - [Run tests](#run-tests)
-  <!-- - [Deployment](#deployment) -->
 - [👥 Authors](#authors)
 - [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
 - [⭐️ Show your support](#support)
 - [🙏 Acknowledgements](#acknowledgements)
-<!-- - [❓ FAQ (OPTIONAL)](#faq) -->
 - [📝 License](#license)
 
 <!-- PROJECT DESCRIPTION -->
@@ -50,13 +46,6 @@
   </ul>
 </details>
 
-<!-- <details>
-  <summary>Server</summary>
-  <ul>
-    <li><a href="https://expressjs.com/">Express.js</a></li>
-  </ul>
-</details> -->
-
 <details>
 <summary>Database</summary>
   <ul>
@@ -74,35 +63,18 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- LIVE DEMO -->
-
-<!-- ## 🚀 Live Demo <a name="live-demo"></a> -->
-
-<!-- > Add a link to your deployed project. -->
-
-<!-- - [Live Demo Link](https://google.com) -->
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 <!-- GETTING STARTED -->
 
 ## 💻 Getting Started <a name="getting-started"></a>
-
-<!-- > Describe how a new developer could make use of your project.
-
-To get a local copy up and running, follow these steps. -->
 
 ### Prerequisites
 
 In order to run this project you need:
 
-<!--
-Example command:
-
 ```sh
- gem install rails
+ gem install bundler
 ```
- -->
+
 
 ### Setup
 
@@ -132,9 +104,8 @@ To run the project, execute the following command:
 
 
 ```sh
-  Execute the main.rb file
+  ruby main.rb
 ```
--
 
 ### Run tests
 
@@ -144,19 +115,6 @@ To run tests, run the following command:
 ```sh
   rspec spec
 ```
--
-
-<!-- ### Deployment -->
-
-<!-- You can deploy this project using: -->
-
-<!--
-Example:
-
-```sh
-
-```
- -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -179,7 +137,7 @@ Example:
 - LinkedIn: [christian-momo](https://www.linkedin.com/in/christian-momo/)
 
 
-👤 **Author2**
+👤 **Author3**
 
 - GitHub: [@mohametalmeari](https://github.com/mohametalmeari)
 - Twitter: [@MohametAlmeari](https://twitter.com/MohametAlmeari)
@@ -220,22 +178,6 @@ If you like this project, please give it a star ⭐️.
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
 I would like to thank the Microverse community for their supports.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- FAQ (optional) -->
-
-<!-- ## ❓ FAQ (OPTIONAL) <a name="faq"></a>
-
-> Add at least 2 questions new developers would ask when they decide to use your project.
-
-- **[Question_1]**
-
-  - [Answer_1]
-
-- **[Question_2]**
-
-  - [Answer_2] -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
