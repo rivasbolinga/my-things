@@ -1,10 +1,28 @@
 [
   {
-    "author_name": "aja",
-    "author_last_name": "jaja"
+    "author_name": "alba",
+    "author_last_name": "lopez",
+    "items": [
+      "House",
+      "Car"
+    ]
   },
   {
-    "author_name": "Lionel",
-    "author_last_name": "Gojon"
+    "author_name": "Belinda",
+    "author_last_name": "Gojon",
+    "items": [
+      "Bed",
+      "Book",
+      "Suitcase",
+      "Car"
+    ]
+  },
+  {
+    "author_name": "Ana",
+    "author_last_name": "Palacios",
+    "items": [
+      "Computer",
+      "Headphones"
+    ]
   }
 ]

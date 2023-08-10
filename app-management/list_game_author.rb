@@ -15,9 +15,11 @@ class ListData
       puts '🎮 LIST OF GAMES'
       puts '------------------'
       games.each_with_index do |game, index|
-        puts "#{index + 1} - Multiplayer: #{game['multiplayer']}, Last time played: #{game['last_played_at']}"
+        puts "#{index + 1} - Multiplayer: #{game['multiplayer']}, " \
+             "Last time played: #{game['last_played_at']}, " \
+             "Published: #{game['publish_date']}"
       end
-      puts '--------------------------------------------'
+      puts '---------------------------------------------------------'
     end
   end
 
@@ -30,7 +32,10 @@ class ListData
       puts '🖌️  LIST OF AUTHORS'
       puts '-------------------'
       authors.each_with_index do |author, index|
-        puts "#{index + 1} - Name: #{author['author_name']}, Last Name: #{author['author_last_name']} "
+        items_list = author['items'].join(', ')
+        puts "#{index + 1} - Name: #{author['author_name']}, " \
+             "Last Name: #{author['author_last_name']}, " \
+             "Items: #{items_list}."
       end
       puts '---------------------------------------------'
 
