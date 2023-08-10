@@ -26,3 +26,4 @@ UPDATE items
 SET archived = TRUE
 WHERE AGE(CURRENT_DATE, publish_date) > INTERVAL '10 years'
 OR id IN (SELECT item_id FROM book WHERE cover_state = 'bad');
+
